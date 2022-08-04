@@ -17,7 +17,17 @@ namespace SkinCareWebApp.Controllers
             return View();
         }
 
-        public ActionResult Precautions()
+        public ActionResult Precautions2()
+        {
+            return View();
+        }
+
+        public ActionResult Activities()
+        {
+            return View();
+        }
+
+        public ActionResult Sunburn()
         {
             return View();
         }
