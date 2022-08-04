@@ -265,6 +265,7 @@
     <Content Include="Views\Home\Precautions2.cshtml" />
     <Content Include="Views\Home\Activities.cshtml" />
     <Content Include="Views\Home\Sunburn.cshtml" />
+    <Content Include="Views\Home\UVHarm.cshtml" />
     <None Include="Views\Home\UvCard.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
