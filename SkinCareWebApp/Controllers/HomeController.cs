@@ -12,6 +12,11 @@ namespace SkinCareWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Assessment()
+        {
+            return View();
+        }
         public ActionResult UvCard()
         {
             return View();
