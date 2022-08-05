@@ -31,5 +31,9 @@ namespace SkinCareWebApp.Controllers
         {
             return View();
         }
+        public ActionResult Sunburn_treatment()
+        {
+            return View();
+        }
     }
 }
