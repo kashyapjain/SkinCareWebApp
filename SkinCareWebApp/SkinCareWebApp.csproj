@@ -128,7 +128,9 @@
     <Compile Include="Services\WeatherService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\shield.png" />
     <Content Include="Assets\Images\sun-protection.svg" />
+    <Content Include="Assets\Images\uv-rays.png" />
     <Content Include="Assets\Images\uv_image.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -141,6 +143,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\ChartsScript.js" />
+    <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -268,6 +272,7 @@
     <Content Include="Views\Home\Sunburn.cshtml" />
     <Content Include="Views\Home\Sunburn_treatment.cshtml" />
     <Content Include="Views\Home\UVHarm.cshtml" />
+    <Content Include="Views\Home\Charts.cshtml" />
     <None Include="Views\Home\UvCard.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

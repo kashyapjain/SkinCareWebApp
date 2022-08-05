@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
    
 }
-<div class="row">
+<div id="container" class="row d-flex flex-direction">
 
     <!-- Weather card -->
     <div style="margin:10px;">
@@ -22,13 +22,23 @@
     </div>
     <!--==========-->
 
+
+    <!-- Sunburn treatment-->
     <div style="margin:10px;">
         @Html.Action("Sunburn_treatment")
     </div>
-    
+    <!--===========-->
+
     <!--UVHarm-->
     <div style="margin:10px;">
         @Html.Action("UVHarm")
+    </div>
+    <!--==========-->
+
+
+    <!--Charts-->
+    <div style="margin:10px;">
+        @Html.Action("Charts")
     </div>
     <!--==========-->
 </div>
