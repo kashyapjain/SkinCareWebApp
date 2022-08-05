@@ -1,0 +1,309 @@
+﻿<style>
+    ul#asses {
+        list-style: none;
+        padding-left: 1rem;
+        !
+    }
+
+        ul#asses > li {
+            margin-top: 50px;
+        }
+
+    .option-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        position: relative;
+        top: 13.33333px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        transition: all 0.15s ease-out 0s;
+        background: #cbd1d8;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5rem;
+        outline: none;
+        position: relative;
+        z-index: 1000;
+    }
+
+        .option-input:hover {
+            background: #9faab7;
+        }
+
+        .option-input:checked {
+            background: #ffb400;
+        }
+
+            .option-input:checked::before {
+                height: 40px;
+                width: 40px;
+                position: absolute;
+                display: inline-block;
+                font-size: 26.66667px;
+                text-align: center;
+                line-height: 40px;
+            }
+
+            .option-input:checked::after {
+                -webkit-animation: click-wave 0.25s;
+                -moz-animation: click-wave 0.25s;
+                animation: click-wave 0.25s;
+                background: #E91E63;
+                display: block;
+                position: relative;
+                z-index: 100;
+            }
+
+        .option-input.radio {
+            border-radius: 50%;
+        }
+
+            .option-input.radio::after {
+                border-radius: 50%;
+            }
+</style>
+
+<div class="row align-self-center justify-content-center">
+    <div class="col-md-8">
+        <div class="d-grid gap-2">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                Take a Skin Protection Assessment Today!
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Test your Skin Protection Knowledge!</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img class="mx-auto d-block" width="50%" src="https://cdn.pixabay.com/photo/2012/04/11/16/39/sunbathing-28829__480.png" />
+                <ul id="asses">
+                    <li>
+                        <div>
+                            <h4 style="font-weight:bold; color:black">01.</h4>
+                            <h4 style="color:black;">I can’t get skin cancer, because my normal routine (such as drive to work, hobbies, and vacations) doesn’t include a lot of time outdoors.</h4>
+                        </div>
+                        <br />
+                        <div style="font-weight:bold">
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example1" />
+                                    True
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio correct" name="example1" />
+                                    False
+                                </label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style="display:none; opacity:0;" id="fade1">
+                            <h6>The Correct Answer is: False</h6>
+                            <p>
+                                Dermatologists (skin doctors) say brief sun exposures all year round can add up to major damage for people with fair skin. And some of the sun’s ultraviolet (UV) rays can even pass through windows, so driving or even sitting by a window during peak sun hours, 10:00 a.m. to 4:00 p.m., can expose your skin to damaging UV rays if the sun is shining directly on you.
+                            </p>
+                            <p>
+                                Everyday exposures are linked to squamous cell skin cancer. Although not as dangerous as melanoma, squamous cell skin cancer is far more common and the number of cases has been going up every year.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 style="font-weight:bold; color:black">02.</h4>
+                            <h4 style="color:black;">If I'm wearing sunscreen, I can stay in the sun as long as I want.</h4>
+                        </div>
+                        <br />
+                        <div style="font-weight:bold">
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example2" />
+                                    True
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio correct" name="example2" />
+                                    False
+                                </label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style="display:none; opacity:0;" id="fade2">
+                            <h6>The correct answer is: False</h6>
+                            <p>
+                                It's not smart to broil in the sun for several hours, even if you are wearing sunscreen. These products don't provide total protection from ultraviolet (UV) rays. The American Cancer Society recommends that people seek shade and limit time in the sun at midday. Also, cover up with a shirt, wear a wide-brimmed hat, use a broad-spectrum sunscreen rated SPF 30 or higher, and reapply it about every 2 hours. Lip balm with sunscreen is a wise choice. And don't forget sunglasses to protect your eyes.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 style="font-weight:bold; color:black">03.</h4>
+                            <h4 style="color:black;">A sunscreen labeled SPF 15 blocks more UV radiation than one labeled SPF 30.</h4>
+                        </div>
+                        <br />
+                        <div style="font-weight:bold">
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example3" />
+                                    True
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio correct" name="example3" />
+                                    False
+                                </label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style="display:none; opacity:0;" id="fade3">
+                            <h6>The correct answer is: False</h6>
+                            <p>
+                                The Sun Protection Factor (SPF) describes how well a sunscreen protects against UVB rays (although it says nothing about protection from UVA rays). SPF 15 sunscreens filter out about 93% of UVB rays, while SPF 30 sunscreens filter out about 97%. Be sure to choose a broad spectrum product that blocks both UVB and UVA light. It’s also important to use enough sunscreen and reapply it often, especially if you are sweating or swimming.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 style="font-weight:bold; color:black">04.</h4>
+                            <h4 style="color:black;">How often do I need to reapply water-resistant sunscreen?</h4>
+                        </div>
+                        <br />
+                        <div style="font-weight:bold">
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example4" />
+                                    Every 2 hours or sooner
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example4" />
+                                    After sweating or swimming
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example4" />
+                                    After I towel dry
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio correct" name="example4" />
+                                    All of the above
+                                </label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style="display:none; opacity:0;" id="fade4">
+                            <h6>The correct answer is: All of the above</h6>
+                            <p>
+                                For best results, most sunscreens need to be reapplied about every 2 hours or sooner, but be sure to check the label for how long the protection will last. Sunscreens labeled “water resistant” are made to protect you from burning when you swim or sweat, but may only last for 40 minutes. Also, remember that sunscreen usually rubs off when you towel dry.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 style="font-weight:bold; color:black">05.</h4>
+                            <h4 style="color:black;">It's good to avoid the sun entirely.</h4>
+                        </div>
+                        <br />
+                        <div style="font-weight:bold">
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio" name="example5" />
+                                    True
+                                </label>
+                            </div>
+                            <br />
+                            <div>
+                                <label>
+                                    <input type="radio" class="option-input radio correct" name="example5" />
+                                    False
+                                </label>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div style="display:none; opacity:0;" id="fade5">
+                            <h6>The correct answer is: False</h6>
+                            <p>
+                                Although sun can cause skin damage, some daily sunlight without sun protection early in the morning (before 10 a.m.) or in the late afternoon is important for proper absorption of vitamin D. Fair-skinned people and those who live in the far north should work in about 15 minutes of sunlight each day. But in areas where it's mostly cloudy, or if you're dark-skinned, you may need more sunlight.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <h3 style="color: #ffb400" id="score"></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button onclick="q()" type="button" class="btn btn-primary">Get Score</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function q() {
+        var correctOpts = document.getElementsByClassName("correct");
+        var count = 0;
+        for (var i = 0; i < correctOpts.length; i++) {
+            fadeIn(i + 1);
+            if (correctOpts[i].checked) {
+                count++;
+            }
+        }
+        document.getElementById("score").textContent = 'You answered ' + count + ' out of 5 questions correctly!'
+    }
+
+    function fadeIn(n) {
+        const element = document.getElementById('fade' + n);
+        if (element.style.display != 'none') {
+            return;
+        }
+        element.style.display = 'block';
+        // Initilize the opacity with 0.1
+        let initOpacity = 0.1;
+        element.style.display = 'block';
+        // Update the opacity with 0.1 every 10 milliseconds
+        const timer = setInterval(function () {
+            if (initOpacity >= 1) {
+                clearInterval(timer);
+            }
+            element.style.opacity = initOpacity;
+            element.style.filter = 'alpha(opacity=' + initOpacity * 100 + ")";
+            initOpacity += initOpacity * 0.1;
+        }, 5);
+    }
+</script>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkinCareWebApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +9,28 @@ namespace SkinCareWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private WeatherService _WeatherService { get; set; }
+
+        public HomeController()
+        {
+            string lat = Request?.Cookies["lat"]?.Value;
+            string lon = Request?.Cookies["lon"]?.Value;
+
+            this._WeatherService = new WeatherService(lat, lon);
+        }
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Assessment()
         {
             return View();
         }
         public ActionResult UvCard()
         {
-            return View();
+            var realTimeUvData = _WeatherService.GetRealTimeUvData();
+            return View(realTimeUvData);
         }
 
         public ActionResult Precautions2()
