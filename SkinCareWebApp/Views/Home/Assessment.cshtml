@@ -250,9 +250,11 @@
                     </p>
                 </div>
             </li>
-            <li>
-
-            </li>
+            <br />
+            <br />
+            <div class="text-center">
+                <h3 style="color: #ffb400" id="score"></h3>
+            </div>
         </ul>
     </div>
 </div>
@@ -260,6 +262,13 @@
     function q(n) {
         fadeIn(n);
         var correctOpts = document.getElementsByClassName("correct");
+        var count = 0;
+        for (var i = 0; i < correctOpts.length; i++) {
+            if (correctOpts[i].checked) {
+                count++;
+            }
+        }
+        document.getElementById("score").textContent = 'You answered ' + count + ' out of 5 questions correctly!'
     }
 
     function fadeIn(n) {
