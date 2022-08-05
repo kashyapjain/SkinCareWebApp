@@ -22,6 +22,11 @@ namespace SkinCareWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Assessment()
+        {
+            return View();
+        }
         public ActionResult UvCard()
         {
             var realTimeUvData = _WeatherService.GetRealTimeUvData();
