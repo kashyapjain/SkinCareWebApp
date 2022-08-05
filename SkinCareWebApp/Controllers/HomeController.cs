@@ -35,5 +35,10 @@ namespace SkinCareWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult UVHarm()
+        {
+            return View();
+        }
     }
 }
