@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SkinCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SkinCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActionData">
           <Key>
             <PropertyRef Name="Id" />
@@ -13,6 +13,18 @@
           <Property Name="UvRange" Type="int" />
           <Property Name="DescriptionId" Type="int" />
           <Property Name="WeatherDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="AssessmentResponses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="q1" Type="varchar" MaxLength="50" />
+          <Property Name="q2" Type="varchar" MaxLength="50" />
+          <Property Name="q3" Type="varchar" MaxLength="50" />
+          <Property Name="q4" Type="varchar" MaxLength="50" />
+          <Property Name="q5" Type="varchar" MaxLength="50" />
+          <Property Name="correct" Type="int" />
         </EntityType>
         <EntityType Name="Description">
           <Key>
@@ -36,14 +48,14 @@
         </Association>
         <EntityContainer Name="SkinCareDBModelStoreContainer">
           <EntitySet Name="ActionData" EntityType="Self.ActionData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentResponses" EntityType="Self.AssessmentResponses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Description" EntityType="Self.Description" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__UvActionD__Descr__628FA481" Association="Self.FK__UvActionD__Descr__628FA481">
             <End Role="Description" EntitySet="Description" />
             <End Role="ActionData" EntitySet="ActionData" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SkinCareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -85,7 +97,20 @@
             <End Role="Description" EntitySet="Descriptions" />
             <End Role="ActionData" EntitySet="ActionDatas" />
           </AssociationSet>
+          <EntitySet Name="AssessmentResponses" EntityType="SkinCareDBModel.AssessmentRespons" />
         </EntityContainer>
+        <EntityType Name="AssessmentRespons">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="q1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correct" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -108,6 +133,19 @@
                 <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
                 <ScalarProperty Name="Description1" ColumnName="Description" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentResponses">
+            <EntityTypeMapping TypeName="SkinCareDBModel.AssessmentRespons">
+              <MappingFragment StoreEntitySet="AssessmentResponses">
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

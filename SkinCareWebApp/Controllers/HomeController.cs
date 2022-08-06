@@ -1,4 +1,6 @@
-﻿using SkinCareWebApp.Services;
+﻿using SkinCareWebApp.Models;
+using SkinCareWebApp.Services;
+using System;
 using System.Web.Mvc;
 
 namespace SkinCareWebApp.Controllers
@@ -8,12 +10,15 @@ namespace SkinCareWebApp.Controllers
         private WeatherService WeatherService { get; set; }
         private ActionService ActionService { get; set; }
 
+        private AssessmentService AssessmentService { get; set; }
+
         public HomeController()
         {
             string lat = System.Web.HttpContext.Current.Request.Cookies["lat"]?.Value;
             string lon = System.Web.HttpContext.Current.Request.Cookies["lon"]?.Value;
 
             this.WeatherService = new WeatherService(lat, lon);
+            this.AssessmentService = new AssessmentService();
             //this.ActionService = new ActionService();
         }
         public ActionResult Index()
@@ -24,6 +29,23 @@ namespace SkinCareWebApp.Controllers
         public ActionResult Assessment()
         {
             return View();
+        }
+
+        [HttpPost]
+        public double AssessmentResult(string q1, string q2, string q3, string q4, string q5, int correct)
+        {
+            AssessmentRespons response = new AssessmentRespons()
+            {
+                q1 = q1,
+                q2 = q2,
+                q3 = q3,
+                q4 = q4,
+                q5 = q5,
+                correct = correct
+            };
+            double percentage = AssessmentService.getPrecentage(Convert.ToInt32(correct));
+            AssessmentService.saveResponse(response);
+            return percentage;
         }
         public ActionResult UvCard()
         {
@@ -62,7 +84,7 @@ namespace SkinCareWebApp.Controllers
 
         public ActionResult WeatherCard()
         {
-            var realTimeWeatherData = _WeatherService.GetRealTimeWeatherData();
+            var realTimeWeatherData = WeatherService.GetRealTimeWeatherData();
             return View(realTimeWeatherData);
         }
     }
