@@ -134,6 +134,24 @@
     <Content Include="Assets\Images\sun-protection.svg" />
     <Content Include="Assets\Images\uv-rays.png" />
     <Content Include="Assets\Images\uv_image.jpg" />
+    <Content Include="Assets\Images\Weather_Images\Weather-01d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-01n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-02d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-02n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-03d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-03n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-04d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-04n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-09d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-09n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-10d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-10n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-11d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-11n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-13d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-13n.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-50d.png" />
+    <Content Include="Assets\Images\Weather_Images\Weather-50n.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -530,6 +548,7 @@
     <Content Include="Scripts\MDB5\src\scss\free\_utilities.scss" />
     <Content Include="Scripts\MDB5\src\scss\free\_variables.scss" />
     <Content Include="Scripts\MDB5\src\scss\mdb.free.scss" />
+    <Content Include="Views\Home\WeatherCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

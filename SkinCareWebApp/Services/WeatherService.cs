@@ -80,16 +80,23 @@ namespace SkinCareWebApp.Services
 
         public UvModel GetRealTimeUvData()
         {
-            if(_Lat == null && _Lon == null)
+            try
+            {
+                if (_Lat == null && _Lon == null)
+                {
+                    return GetDefaultUvData();
+                }
+                string url = GetRealTimeUvUrl();
+                string responseString = GetUvResponseString(url);
+
+                UvModel uvData = JsonConvert.DeserializeObject<UvModel>(responseString);
+
+                return uvData;
+            }catch(Exception ex)
             {
                 return GetDefaultUvData();
             }
-            string url = GetRealTimeUvUrl();
-            string responseString = GetUvResponseString(url);
-
-            UvModel uvData = JsonConvert.DeserializeObject<UvModel>(responseString);
-
-            return uvData;
+            
         }
         private UvModel GetDefaultUvData()
         {

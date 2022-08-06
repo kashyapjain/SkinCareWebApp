@@ -1,0 +1,49 @@
+﻿@using SkinCareWebApp.Models
+@model WeatherModel
+
+
+@{ 
+    double KelvinToCelsius(double temp)
+    {
+        if (temp == null)
+        {
+            return 0;
+        }
+        double C = (temp - 273.15);
+        return C;
+    }
+}
+
+<div class="col-md-10 col-lg-6 col-xl-4" id="weather-card">
+    <div class="card" style="color: #4B515D; border-radius: 35px; height:100%">
+        <div class="card-body p-4">
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <h4 class="flex-grow-1 align-self-center">Weather Info</h4>
+                    <h6 class="justify-content-end "><b>@DateTime.Now.ToShortDateString()</b></h6>
+                </div>
+                <div class="d-flex flex-column text-center mt-5 mb-4">
+                    <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> @KelvinToCelsius(Model.main.temp) &#8451;</h6>
+                    <span class="small" style="color: #868B94">@Model.weather[0].main</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 " style="font-size: 1rem;">
+                        <div>
+                            <i class="fas fa-wind fa-fw" style="color: #868B94;"></i>
+                            <span class="ms-1">@Model.wind.speed km/h</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> @Model.main.humidity% </span>
+                        </div>
+                        <div>
+                            <i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> @Model.main.pressure hPa </span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-grow-1 align-items-center justify-content-center">
+                        <img src=@($"/Assets/Images/Weather_Images/Weather-{Model.weather[0].icon}.png") width="120" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
