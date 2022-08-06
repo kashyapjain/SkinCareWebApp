@@ -1,8 +1,4 @@
 ﻿using SkinCareWebApp.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SkinCareWebApp.Controllers
@@ -13,8 +9,8 @@ namespace SkinCareWebApp.Controllers
 
         public HomeController()
         {
-            string lat = Request?.Cookies["lat"]?.Value;
-            string lon = Request?.Cookies["lon"]?.Value;
+            string lat = System.Web.HttpContext.Current.Request.Cookies["lat"]?.Value;
+            string lon = System.Web.HttpContext.Current.Request.Cookies["lon"]?.Value;
 
             this._WeatherService = new WeatherService(lat, lon);
         }
