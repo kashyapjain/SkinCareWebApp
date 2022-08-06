@@ -29,7 +29,7 @@ namespace SkinCareWebApp.Controllers
             return View(realTimeUvData);
         }
 
-        public ActionResult Precautions2()
+        public ActionResult Precautions()
         {
             return View();
         }
