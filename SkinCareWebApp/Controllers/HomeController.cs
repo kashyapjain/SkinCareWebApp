@@ -62,7 +62,7 @@ namespace SkinCareWebApp.Controllers
 
         public ActionResult WeatherCard()
         {
-            var realTimeWeatherData = _WeatherService.GetRealTimeWeatherData();
+            var realTimeWeatherData = WeatherService.GetRealTimeWeatherData();
             return View(realTimeWeatherData);
         }
     }
