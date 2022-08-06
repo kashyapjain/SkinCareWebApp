@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SkinCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActionData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UvRange" Type="int" />
+          <Property Name="DescriptionId" Type="int" />
+          <Property Name="WeatherDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="DescriptionId" />
+          </Key>
+          <Property Name="DescriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <Association Name="FK__UvActionD__Descr__628FA481">
+          <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
+          <End Role="ActionData" Type="Self.ActionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="DescriptionId" />
+            </Principal>
+            <Dependent Role="ActionData">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkinCareDBModelStoreContainer">
+          <EntitySet Name="ActionData" EntityType="Self.ActionData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Description" EntityType="Self.Description" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UvActionD__Descr__628FA481" Association="Self.FK__UvActionD__Descr__628FA481">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="ActionData" EntitySet="ActionData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkinCareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActionData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UvRange" Type="Int32" />
+          <Property Name="DescriptionId" Type="Int32" />
+          <Property Name="WeatherDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Description" Relationship="Self.FK__UvActionD__Descr__628FA481" FromRole="ActionData" ToRole="Description" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="DescriptionId" />
+          </Key>
+          <Property Name="DescriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <NavigationProperty Name="ActionDatas" Relationship="Self.FK__UvActionD__Descr__628FA481" FromRole="Description" ToRole="ActionData" />
+        </EntityType>
+        <Association Name="FK__UvActionD__Descr__628FA481">
+          <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
+          <End Role="ActionData" Type="Self.ActionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="DescriptionId" />
+            </Principal>
+            <Dependent Role="ActionData">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkinCareDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActionDatas" EntityType="Self.ActionData" />
+          <EntitySet Name="Descriptions" EntityType="Self.Description" />
+          <AssociationSet Name="FK__UvActionD__Descr__628FA481" Association="Self.FK__UvActionD__Descr__628FA481">
+            <End Role="Description" EntitySet="Descriptions" />
+            <End Role="ActionData" EntitySet="ActionDatas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SkinCareDBModelStoreContainer" CdmEntityContainer="SkinCareDBEntities">
+          <EntitySetMapping Name="ActionDatas">
+            <EntityTypeMapping TypeName="SkinCareDBModel.ActionData">
+              <MappingFragment StoreEntitySet="ActionData">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UvRange" ColumnName="UvRange" />
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="WeatherDescription" ColumnName="WeatherDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descriptions">
+            <EntityTypeMapping TypeName="SkinCareDBModel.Description">
+              <MappingFragment StoreEntitySet="Description">
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="Description1" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
