@@ -5,14 +5,16 @@ namespace SkinCareWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private WeatherService _WeatherService { get; set; }
+        private WeatherService WeatherService { get; set; }
+        private ActionService ActionService { get; set; }
 
         public HomeController()
         {
             string lat = System.Web.HttpContext.Current.Request.Cookies["lat"]?.Value;
             string lon = System.Web.HttpContext.Current.Request.Cookies["lon"]?.Value;
 
-            this._WeatherService = new WeatherService(lat, lon);
+            this.WeatherService = new WeatherService(lat, lon);
+            //this.ActionService = new ActionService();
         }
         public ActionResult Index()
         {
@@ -25,7 +27,7 @@ namespace SkinCareWebApp.Controllers
         }
         public ActionResult UvCard()
         {
-            var realTimeUvData = _WeatherService.GetRealTimeUvData();
+            var realTimeUvData = WeatherService.GetRealTimeUvData();
             return View(realTimeUvData);
         }
 
