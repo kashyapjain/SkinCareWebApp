@@ -57,16 +57,23 @@ namespace SkinCareWebApp.Controllers
         }
         public ActionResult UvCard()
         {
-            var realTimeUvData = WeatherService.GetRealTimeUvData();
-
-            HttpCookie uvIndexCookie = new HttpCookie(nameof(UvIndex))
+            try
             {
-                Value = realTimeUvData.uv.ToString()
-            };
+                var realTimeUvData = WeatherService.GetRealTimeUvData();
 
-            System.Web.HttpContext.Current.Response.Cookies.Add(uvIndexCookie);
+                HttpCookie uvIndexCookie = new HttpCookie(nameof(UvIndex))
+                {
+                    Value = realTimeUvData.uv.ToString()
+                };
 
-            return View(realTimeUvData);
+                System.Web.HttpContext.Current.Response.Cookies.Add(uvIndexCookie);
+
+                return View(realTimeUvData);
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
 
         public ActionResult Precautions()
