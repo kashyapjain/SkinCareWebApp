@@ -26,16 +26,23 @@ namespace SkinCareWebApp.Services
         }
         public WeatherModel GetRealTimeWeatherData()
         {
-            if (_Lat == null && _Lon == null)
+            try
+            {
+                if (_Lat == null && _Lon == null)
+                {
+                    return GetDefaultWeatherData();
+                }
+                string url = GetRealTimeWeatherUrl();
+                string responseString = GetWeatherResponseString(url);
+
+                WeatherModel weatherData = JsonConvert.DeserializeObject<WeatherModel>(responseString);
+
+                return weatherData;
+            }
+            catch (Exception ex)
             {
                 return GetDefaultWeatherData();
             }
-            string url = GetRealTimeWeatherUrl();
-            string responseString = GetWeatherResponseString(url);
-
-            WeatherModel weatherData = JsonConvert.DeserializeObject<WeatherModel>(responseString);
-
-            return weatherData;
         }
 
         private string GetWeatherResponseString(string url)
@@ -90,6 +97,12 @@ namespace SkinCareWebApp.Services
                 string responseString = GetUvResponseString(url);
 
                 UvModel uvData = JsonConvert.DeserializeObject<UvModel>(responseString);
+                
+                if(uvData.uv == 0)
+                {
+                    ApiResult apiResult = JsonConvert.DeserializeObject<ApiResult>(responseString);
+                    return apiResult.result;
+                }
 
                 return uvData;
             }catch(Exception ex)
@@ -115,18 +128,43 @@ namespace SkinCareWebApp.Services
       
         private string GetUvResponseString(string url)
         {
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            httpRequest.Headers["x-access-token"] = "4be36784f0954deb6b344e044962a4db";
-
-
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            try
             {
-                var result = streamReader.ReadToEnd();
-                return result;
+                var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                httpRequest.Headers["x-access-token"] = "4be36784f0954deb6b344e044962a4db";
+
+
+                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    return result;
+                }
+            }
+            catch(Exception ex)
+            {
+                url = GetVisualCrossingUrl();
+
+                var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    return result;
+                }
             }
         }
+
+        private string GetVisualCrossingUrl()
+        {
+            string url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
+            string elements = "datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Ctemp%2Cfeelslike%2Chumidity%2Cprecip%2Cwindspeed%2Cpressure%2Csolarradiation%2Csolarenergy%2Cuvindex&include=current%2Cdays";
+            string key = "EBY8VHU22SUAUN9GCRBUU42EF";
+            return url + _Lat + "%2C" + _Lon + "/today?unitGroup=metric&elements=" + elements + "&key=" + key + "&contentType=json";
+        }
+
         private string GetRealTimeUvUrl()
         {
             string url = "https://api.openuv.io/api/v1/uv";

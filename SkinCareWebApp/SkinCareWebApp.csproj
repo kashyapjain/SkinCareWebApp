@@ -338,13 +338,14 @@
     <Content Include="Scripts\MDB5\src\js\mdb\util\touch\swipe.js" />
     <Content Include="Scripts\MDB5\src\js\mdb\util\touch\touchUtil.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Home\Precautions.cshtml" />
+    <Content Include="Views\Home\ActionDetails.cshtml" />
     <Content Include="Views\Home\Activities.cshtml" />
     <Content Include="Views\Home\Sunburn.cshtml" />
     <Content Include="Views\Home\Sunburn_treatment.cshtml" />
     <Content Include="Views\Home\UVHarm.cshtml" />
     <Content Include="Views\Home\Charts.cshtml" />
     <Content Include="Views\Home\Assessment.cshtml" />
+    <Content Include="Views\Home\Precautions.cshtml" />
     <None Include="Views\Home\UvCard.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
