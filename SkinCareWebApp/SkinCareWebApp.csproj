@@ -135,7 +135,14 @@
     <Compile Include="Models\ActionData.cs">
       <DependentUpon>SkinCareDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssessmentRespons.cs">
+      <DependentUpon>SkinCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomWeatherModel.cs" />
     <Compile Include="Models\Description.cs">
+      <DependentUpon>SkinCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DescriptionType.cs">
       <DependentUpon>SkinCareDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SkinCareDataModel.Context.cs">
@@ -153,10 +160,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SkinCareDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TrendsArchiveData.cs">
+      <DependentUpon>SkinCareDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrendsMapData.cs">
+      <DependentUpon>SkinCareDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UvModel.cs" />
     <Compile Include="Models\WeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ActionService.cs" />
+    <Compile Include="Services\TrendsService.cs" />
     <Compile Include="Services\WeatherService.cs" />
   </ItemGroup>
   <ItemGroup>

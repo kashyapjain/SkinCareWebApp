@@ -27,5 +27,9 @@ namespace SkinCareWebApp.Models
     
         public virtual DbSet<ActionData> ActionDatas { get; set; }
         public virtual DbSet<Description> Descriptions { get; set; }
+        public virtual DbSet<AssessmentRespons> AssessmentResponses { get; set; }
+        public virtual DbSet<DescriptionType> DescriptionTypes { get; set; }
+        public virtual DbSet<TrendsArchiveData> TrendsArchiveDatas { get; set; }
+        public virtual DbSet<TrendsMapData> TrendsMapDatas { get; set; }
     }
 }

@@ -12,20 +12,18 @@ namespace SkinCareWebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Description
+    public partial class DescriptionType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Description()
+        public DescriptionType()
         {
-            this.ActionDatas = new HashSet<ActionData>();
+            this.Descriptions = new HashSet<Description>();
         }
     
-        public int DescriptionId { get; set; }
-        public string Description1 { get; set; }
-        public Nullable<int> Type { get; set; }
+        public int TypeId { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActionData> ActionDatas { get; set; }
-        public virtual DescriptionType DescriptionType { get; set; }
+        public virtual ICollection<Description> Descriptions { get; set; }
     }
 }

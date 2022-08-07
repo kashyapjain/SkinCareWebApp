@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SkinCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SkinCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActionData">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +14,18 @@
           <Property Name="DescriptionId" Type="int" />
           <Property Name="WeatherDescription" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="AssessmentResponses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="q1" Type="varchar" MaxLength="50" />
+          <Property Name="q2" Type="varchar" MaxLength="50" />
+          <Property Name="q3" Type="varchar" MaxLength="50" />
+          <Property Name="q4" Type="varchar" MaxLength="50" />
+          <Property Name="q5" Type="varchar" MaxLength="50" />
+          <Property Name="correct" Type="int" />
+        </EntityType>
         <EntityType Name="Description">
           <Key>
             <PropertyRef Name="DescriptionId" />
@@ -22,6 +34,49 @@
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="Type" Type="int" />
         </EntityType>
+        <EntityType Name="DescriptionType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TrendsArchiveData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EpochDate" Type="bigint" Nullable="false" />
+          <Property Name="Temp" Type="float" />
+          <Property Name="Humidity" Type="float" />
+          <Property Name="SolarRadiation" Type="float" />
+          <Property Name="SolarEnergy" Type="float" />
+          <Property Name="UvIndex" Type="float" />
+        </EntityType>
+        <EntityType Name="TrendsMapData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationCityName" Type="varchar(max)" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+          <Property Name="TrendStartDate" Type="bigint" />
+          <Property Name="TrendEndDate" Type="bigint" />
+          <Property Name="EntryDate" Type="date" />
+        </EntityType>
+        <Association Name="FK__Descriptio__Type__60A75C0F">
+          <End Role="DescriptionType" Type="Self.DescriptionType" Multiplicity="0..1" />
+          <End Role="Description" Type="Self.Description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DescriptionType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Description">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UvActionD__Descr__628FA481">
           <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
           <End Role="ActionData" Type="Self.ActionData" Multiplicity="*" />
@@ -36,14 +91,21 @@
         </Association>
         <EntityContainer Name="SkinCareDBModelStoreContainer">
           <EntitySet Name="ActionData" EntityType="Self.ActionData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentResponses" EntityType="Self.AssessmentResponses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Description" EntityType="Self.Description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DescriptionType" EntityType="Self.DescriptionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrendsArchiveData" EntityType="Self.TrendsArchiveData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrendsMapData" EntityType="Self.TrendsMapData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Descriptio__Type__60A75C0F" Association="Self.FK__Descriptio__Type__60A75C0F">
+            <End Role="DescriptionType" EntitySet="DescriptionType" />
+            <End Role="Description" EntitySet="Description" />
+          </AssociationSet>
           <AssociationSet Name="FK__UvActionD__Descr__628FA481" Association="Self.FK__UvActionD__Descr__628FA481">
             <End Role="Description" EntitySet="Description" />
             <End Role="ActionData" EntitySet="ActionData" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SkinCareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -65,6 +127,7 @@
           <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="Int32" />
           <NavigationProperty Name="ActionDatas" Relationship="Self.FK__UvActionD__Descr__628FA481" FromRole="Description" ToRole="ActionData" />
+          <NavigationProperty Name="DescriptionType" Relationship="SkinCareDBModel.FK__Descriptio__Type__60A75C0F" FromRole="Description" ToRole="DescriptionType" />
         </EntityType>
         <Association Name="FK__UvActionD__Descr__628FA481">
           <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
@@ -85,7 +148,71 @@
             <End Role="Description" EntitySet="Descriptions" />
             <End Role="ActionData" EntitySet="ActionDatas" />
           </AssociationSet>
+          <EntitySet Name="AssessmentResponses" EntityType="SkinCareDBModel.AssessmentRespons" />
+          <EntitySet Name="DescriptionTypes" EntityType="SkinCareDBModel.DescriptionType" />
+          <EntitySet Name="TrendsArchiveDatas" EntityType="SkinCareDBModel.TrendsArchiveData" />
+          <EntitySet Name="TrendsMapDatas" EntityType="SkinCareDBModel.TrendsMapData" />
+          <AssociationSet Name="FK__Descriptio__Type__60A75C0F" Association="SkinCareDBModel.FK__Descriptio__Type__60A75C0F">
+            <End Role="DescriptionType" EntitySet="DescriptionTypes" />
+            <End Role="Description" EntitySet="Descriptions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AssessmentRespons">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="q1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="q5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correct" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DescriptionType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Descriptions" Relationship="SkinCareDBModel.FK__Descriptio__Type__60A75C0F" FromRole="DescriptionType" ToRole="Description" />
+        </EntityType>
+        <EntityType Name="TrendsArchiveData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EpochDate" Type="Int64" Nullable="false" />
+          <Property Name="Temp" Type="Double" />
+          <Property Name="Humidity" Type="Double" />
+          <Property Name="SolarRadiation" Type="Double" />
+          <Property Name="SolarEnergy" Type="Double" />
+          <Property Name="UvIndex" Type="Double" />
+        </EntityType>
+        <EntityType Name="TrendsMapData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationCityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <Property Name="TrendStartDate" Type="Int64" />
+          <Property Name="TrendEndDate" Type="Int64" />
+          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__Descriptio__Type__60A75C0F">
+          <End Type="SkinCareDBModel.DescriptionType" Role="DescriptionType" Multiplicity="0..1" />
+          <End Type="SkinCareDBModel.Description" Role="Description" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DescriptionType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Description">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -108,6 +235,53 @@
                 <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
                 <ScalarProperty Name="Description1" ColumnName="Description" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentResponses">
+            <EntityTypeMapping TypeName="SkinCareDBModel.AssessmentRespons">
+              <MappingFragment StoreEntitySet="AssessmentResponses">
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DescriptionTypes">
+            <EntityTypeMapping TypeName="SkinCareDBModel.DescriptionType">
+              <MappingFragment StoreEntitySet="DescriptionType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrendsArchiveDatas">
+            <EntityTypeMapping TypeName="SkinCareDBModel.TrendsArchiveData">
+              <MappingFragment StoreEntitySet="TrendsArchiveData">
+                <ScalarProperty Name="UvIndex" ColumnName="UvIndex" />
+                <ScalarProperty Name="SolarEnergy" ColumnName="SolarEnergy" />
+                <ScalarProperty Name="SolarRadiation" ColumnName="SolarRadiation" />
+                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="EpochDate" ColumnName="EpochDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrendsMapDatas">
+            <EntityTypeMapping TypeName="SkinCareDBModel.TrendsMapData">
+              <MappingFragment StoreEntitySet="TrendsMapData">
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TrendEndDate" ColumnName="TrendEndDate" />
+                <ScalarProperty Name="TrendStartDate" ColumnName="TrendStartDate" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="LocationCityName" ColumnName="LocationCityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
