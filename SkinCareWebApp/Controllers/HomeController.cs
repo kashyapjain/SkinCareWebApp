@@ -3,6 +3,8 @@ using SkinCareWebApp.Models;
 using SkinCareWebApp.Services;
 using System;
 using System.Collections.Generic;
+using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SkinCareWebApp.Controllers
@@ -10,25 +12,25 @@ namespace SkinCareWebApp.Controllers
     public class HomeController : Controller
     {
         private WeatherService WeatherService { get; set; }
-        //private TrendsService TrendsService { get; set; }
         private ActionService ActionService { get; set; }
+
+        private AssessmentService AssessmentService { get; set; }
+
+        private double UvIndex { get; set; }
+        private string MainWeather { get; set; }
 
         public HomeController()
         {
             string lat = System.Web.HttpContext.Current.Request.Cookies["lat"]?.Value;
             string lon = System.Web.HttpContext.Current.Request.Cookies["lon"]?.Value;
-            if(lat==null && lon == null)
-            {
-                this.WeatherService = new WeatherService("-37.815340", "144.963230");
+            string uvIndex = System.Web.HttpContext.Current.Request.Cookies[nameof(UvIndex)]?.Value;
+            string mainWeather = System.Web.HttpContext.Current.Request.Cookies[nameof(MainWeather)]?.Value;
+            
+            UvIndex = uvIndex!=null ? Convert.ToDouble(uvIndex):0;
+            MainWeather = mainWeather;
 
-                //this.TrendsService = new TrendsService(-37.815340, 144.963230, "MelBourne, AUS");
-
-                return;
-            }
             this.WeatherService = new WeatherService(lat, lon);
-
-            //this.TrendsService = new TrendsService(double.Parse(lat), double.Parse(lon), "MelBourne, AUS");
-            //this.ActionService = new ActionService();
+            this.AssessmentService = new AssessmentService();
         }
         public ActionResult Index()
         {
@@ -39,10 +41,42 @@ namespace SkinCareWebApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public double AssessmentResult(string q1, string q2, string q3, string q4, string q5, int correct)
+        {
+            AssessmentRespons response = new AssessmentRespons()
+            {
+                q1 = q1,
+                q2 = q2,
+                q3 = q3,
+                q4 = q4,
+                q5 = q5,
+                correct = correct
+            };
+            double percentage = AssessmentService.getPrecentage(Convert.ToInt32(correct));
+            AssessmentService.saveResponse(response);
+            return percentage;
+        }
         public ActionResult UvCard()
         {
-            var realTimeUvData = WeatherService.GetRealTimeUvData();
-            return View(realTimeUvData);
+            try
+            {
+                var realTimeUvData = WeatherService.GetRealTimeUvData();
+
+                HttpCookie uvIndexCookie = new HttpCookie(nameof(UvIndex))
+                {
+                    Value = realTimeUvData.uv.ToString()
+                };
+
+                System.Web.HttpContext.Current.Response.Cookies.Add(uvIndexCookie);
+
+                return View(realTimeUvData);
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
 
         public ActionResult Precautions()
@@ -55,6 +89,12 @@ namespace SkinCareWebApp.Controllers
             return View();
         }
 
+        public ActionResult ActionDetails(int type)
+        {
+            ActionService = new ActionService(UvIndex, MainWeather);
+            var activities = ActionService.GetSpecificActionData(type);
+            return View(activities);
+        }
         public ActionResult Sunburn()
         {
             return View();
@@ -85,6 +125,14 @@ namespace SkinCareWebApp.Controllers
         public ActionResult WeatherCard()
         {
             var realTimeWeatherData = WeatherService.GetRealTimeWeatherData();
+
+            HttpCookie mainWeatherCookie = new HttpCookie(nameof(MainWeather))
+            {
+                Value = realTimeWeatherData.weather[0].main
+            };
+
+            System.Web.HttpContext.Current.Response.Cookies.Add(mainWeatherCookie);
+
             return View(realTimeWeatherData);
         }
     }

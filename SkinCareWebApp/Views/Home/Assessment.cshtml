@@ -71,6 +71,8 @@
             }
 </style>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <div class="row align-self-center justify-content-center">
     <div class="col-md-8">
         <div class="d-grid gap-2">
@@ -102,14 +104,14 @@
                         <div style="font-weight:bold">
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example1" />
+                                    <input type="radio" class="option-input radio" name="example1" value="true" />
                                     True
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio correct" name="example1" />
+                                    <input type="radio" class="option-input radio correct" name="example1" value="false" />
                                     False
                                 </label>
                             </div>
@@ -135,14 +137,14 @@
                         <div style="font-weight:bold">
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example2" />
+                                    <input type="radio" class="option-input radio" name="example2" value="true"/>
                                     True
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio correct" name="example2" />
+                                    <input type="radio" class="option-input radio correct" name="example2" value="false"/>
                                     False
                                 </label>
                             </div>
@@ -165,14 +167,14 @@
                         <div style="font-weight:bold">
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example3" />
+                                    <input type="radio" class="option-input radio" name="example3" value="true"/>
                                     True
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio correct" name="example3" />
+                                    <input type="radio" class="option-input radio correct" name="example3" value="false"/>
                                     False
                                 </label>
                             </div>
@@ -195,28 +197,28 @@
                         <div style="font-weight:bold">
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example4" />
+                                    <input type="radio" class="option-input radio" name="example4" value="Every 2 hours or sooner"/>
                                     Every 2 hours or sooner
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example4" />
+                                    <input type="radio" class="option-input radio" name="example4" value="After sweating or swimming"/>
                                     After sweating or swimming
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example4" />
+                                    <input type="radio" class="option-input radio" name="example4" value="After I towel dry"/>
                                     After I towel dry
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio correct" name="example4" />
+                                    <input type="radio" class="option-input radio correct" name="example4" value="All of the above"/>
                                     All of the above
                                 </label>
                             </div>
@@ -239,14 +241,14 @@
                         <div style="font-weight:bold">
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio" name="example5" />
+                                    <input type="radio" class="option-input radio" name="example5" value="true"/>
                                     True
                                 </label>
                             </div>
                             <br />
                             <div>
                                 <label>
-                                    <input type="radio" class="option-input radio correct" name="example5" />
+                                    <input type="radio" class="option-input radio correct" name="example5" value="false"/>
                                     False
                                 </label>
                             </div>
@@ -263,6 +265,9 @@
                 </ul>
                 <div class="text-center">
                     <h3 style="color: #ffb400" id="score"></h3>
+                    <br />
+                    <br />
+                    <h3 id="result"></h3>
                 </div>
             </div>
             <div class="modal-footer">
@@ -284,6 +289,11 @@
                 count++;
             }
         }
+
+        $.post('/Home/AssessmentResult', { q1: $("input[name='example1']:checked").val(), q2: $("input[name='example2']:checked").val(), q3: $("input[name='example3']:checked").val(), q4: $("input[name='example4']:checked").val(), q5: $("input[name='example5']:checked").val(), correct: count}, (data) => {
+            document.getElementById("result").textContent = 'Better than ' + data + '% of Participants!'
+        });
+
         document.getElementById("score").textContent = 'You answered ' + count + ' out of 5 questions correctly!'
     }
 

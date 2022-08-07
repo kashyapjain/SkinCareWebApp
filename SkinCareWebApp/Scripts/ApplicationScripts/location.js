@@ -8,8 +8,6 @@ function setLocation() {
             document.cookie = 'lat=' + position.coords.latitude+";";
             document.cookie = 'lon=' + position.coords.longitude + ";";
 
-            document.cookie = 'lon=' + "hiii this is testing" + ";";
-
             console.log(document.cookie);
         });
     } else {

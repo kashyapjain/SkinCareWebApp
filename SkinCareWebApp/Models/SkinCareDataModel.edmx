@@ -285,6 +285,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentResponses">
+            <EntityTypeMapping TypeName="SkinCareDBModel.AssessmentRespons">
+              <MappingFragment StoreEntitySet="AssessmentResponses">
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -10,6 +10,7 @@
         <AssociationConnector Association="SkinCareDBModel.FK__UvActionD__Descr__628FA481" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SkinCareDBModel.TrendsArchiveData" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="SkinCareDBModel.FK__Descriptio__Type__60A75C0F" />
+        <EntityTypeShape EntityType="SkinCareDBModel.AssessmentRespons" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
