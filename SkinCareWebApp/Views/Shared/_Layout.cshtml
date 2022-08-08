@@ -13,6 +13,8 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css"
           rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
@@ -33,26 +35,18 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="/home/index">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Contacts</a>
+                        <a class="nav-link disabled">Contacts</a>
                     </li>
                 </ul>
-                <form class="d-flex input-group w-auto">
-                    <input type="search"
-                           class="form-control"
-                           placeholder="Search"
-                           aria-label="Search" />
-                    <button class="btn btn-outline-primary"
-                            type="button"
-                            data-mdb-ripple-color="dark">
-                        Search
-                    </button>
-                </form>
+                @*<div class="d-flex input-group w-auto">
+                    <h4>testing</h4>
+                </div>*@
             </div>
         </div>
     </nav>
@@ -124,20 +118,21 @@
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:<i class="fab fa-mdb"></i>
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            Copyright © 2022-2024  SkinCareWorks
         </div>
         <!-- Copyright -->
     </footer>
 
     <!-- Footer -->
     <!-- Scripts -->
-
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script src="~/Scripts/Index.js"></script>
     <script src="~/Scripts/ChartsScript.js"></script>
     <!-- Scripts -->

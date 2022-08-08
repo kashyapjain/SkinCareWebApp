@@ -12,8 +12,8 @@ namespace SkinCareWebApp.Services
     public class TrendsService
     {
         private SkinCareDBEntities Entities = new SkinCareDBEntities();
-        private double Lat { get; set; }
-        private double Lon { get; set; }
+        private double? Lat { get; set; }
+        private double? Lon { get; set; }
         private string CityName { get; set; }
 
         private int DataGap = 7;
@@ -35,7 +35,8 @@ namespace SkinCareWebApp.Services
             long StartDateEpoch = GetUnixTime(CurrentDate.AddDays(-DataGap));
 
             var LastRecord = Entities.TrendsMapDatas.ToList();
-            if (LastRecord == null || LastRecord.Count==0)
+            var lastRecord = LastRecord.Last();
+            if (LastRecord == null || LastRecord.Count==0 || lastRecord.LocationCityName!=CityName)
             {
                 try
                 {
@@ -81,7 +82,6 @@ namespace SkinCareWebApp.Services
             }
             else
             {
-                var lastRecord = LastRecord.Last();
                 long? tempdiff = EndDateEpoch - lastRecord.TrendEndDate;
                 if (tempdiff == 0)
                 {

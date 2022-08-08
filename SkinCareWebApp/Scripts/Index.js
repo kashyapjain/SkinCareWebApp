@@ -1,4 +1,16 @@
-﻿let scrollObj = { value: 1 };
+﻿
+
+//Setting up some elements
+let uvCardTimeEle = document.getElementById("uvCardTimeEle");
+uvCardTimeEle.innerHTML = `<b>${new Date().toLocaleTimeString()}</b>`
+
+
+let weatherCardDateEle = document.getElementById("weatherCardDateEle");
+weatherCardDateEle.innerHTML = `<b>${new Date().toLocaleDateString("en-US",{ year: 'numeric', month: 'short', day: 'numeric' })}</b>`
+
+//
+
+let scrollObj = { value: 1 };
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,3 +40,62 @@ t1.to(uvCard,
         x: 100,
         opacity: 0,
     }, "-=1");
+
+
+$("#citySearchBar").on("select2:select", (e) => {
+    var data = e.params.data;
+    const [Lat, Lon] = data.id.split(',');
+    const cityName = data.text;
+    //console.log(Lat, Lon, cityName);
+
+    document.cookie = 'lat=' + Lat + ";";
+    document.cookie = 'lon=' + Lon + ";";
+    document.cookie = 'city=' + cityName + ";";
+
+    console.log(document.cookie);
+
+    document.location.reload();
+
+});
+
+$("#citySearchBar").select2({
+    ajax: {
+        url: "https://wft-geo-db.p.rapidapi.com/v1/geo/cities",
+        headers: {
+            "X-RapidAPI-Key": "4936931759mshe6fcf6f98ce1fb8p19187djsn385119d168d6",
+            "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com"
+        },
+        dataType: 'json',
+        delay: 1000,
+        data: function (params) {
+            return {
+                namePrefix: params.term
+            };
+        },
+        processResults: function (data, params) {
+            //console.log(data.data);
+            return {
+                results: dataToBeExported(data.data),
+            };
+        },
+        cache: true
+    },
+    placeholder: 'Search.....',
+
+});
+
+
+
+function dataToBeExported(array) {
+    var data = array.map((item) => {
+
+        return {
+            id: `${item.latitude},${item.longitude}`,
+            text: `${item.city}`
+        }
+    });
+
+    return data;
+}
+
+

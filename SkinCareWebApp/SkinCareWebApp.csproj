@@ -263,6 +263,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\WeatherCard.cshtml" />
     <Content Include="Views\Home\UvCard.cshtml" />
+    <Content Include="Views\Home\CitySearchComponent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

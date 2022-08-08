@@ -3,7 +3,6 @@ using SkinCareWebApp.Models;
 using SkinCareWebApp.Services;
 using System;
 using System.Collections.Generic;
-using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,9 +12,8 @@ namespace SkinCareWebApp.Controllers
     {
         private WeatherService WeatherService { get; set; }
         private ActionService ActionService { get; set; }
-
         private AssessmentService AssessmentService { get; set; }
-
+        private TrendsService TrendsService { get; set; }
         private double UvIndex { get; set; }
         private string MainWeather { get; set; }
 
@@ -25,12 +23,24 @@ namespace SkinCareWebApp.Controllers
             string lon = System.Web.HttpContext.Current.Request.Cookies["lon"]?.Value;
             string uvIndex = System.Web.HttpContext.Current.Request.Cookies[nameof(UvIndex)]?.Value;
             string mainWeather = System.Web.HttpContext.Current.Request.Cookies[nameof(MainWeather)]?.Value;
-            
+            string cityName = System.Web.HttpContext.Current.Request.Cookies["city"]?.Value;
+
             UvIndex = uvIndex!=null ? Convert.ToDouble(uvIndex):0;
             MainWeather = mainWeather;
 
             this.WeatherService = new WeatherService(lat, lon);
             this.AssessmentService = new AssessmentService();
+
+            if (lat == null || lon == null || cityName == null)
+            {
+                lat = "-37.815340";
+                lon = "144.963230";
+                cityName = "MelBourne, AUS";
+
+            }
+            this.TrendsService = new TrendsService(float.Parse(lat),float.Parse(lon), cityName);
+
+
         }
         public ActionResult Index()
         {
@@ -116,8 +126,8 @@ namespace SkinCareWebApp.Controllers
 
         public JsonResult DataForChartTrends()
         {
-            TrendsService trendsService = new TrendsService(-37.815340, 144.963230, "MelBourne, AUS");
-            List<TrendsArchiveData> data = trendsService.dataForTrends();
+            //TrendsService trendsService = new TrendsService(-37.815340, 144.963230, "MelBourne, AUS");
+            List<TrendsArchiveData> data = TrendsService.dataForTrends();
             return Json(data,JsonRequestBehavior.AllowGet);
         }
 
@@ -135,5 +145,11 @@ namespace SkinCareWebApp.Controllers
 
             return View(realTimeWeatherData);
         }
+
+        public ActionResult CitySearchComponent()
+        {
+            return View();
+        }
+
     }
 }

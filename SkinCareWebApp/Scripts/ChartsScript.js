@@ -35,7 +35,7 @@ fetch("/home/DataForChartTrends")
             data: {
                 labels: labelsData,
                 datasets: [{
-                    label: "UV index data",
+                    label: "UV Index Trends ( Past 7 days )",
                     data: data.map((item) => item.UvIndex),
                     backgroundColor: [
                         'rgba(105, 0, 132, .2)',
@@ -60,7 +60,7 @@ fetch("/home/DataForChartTrends")
             data: {
                 labels: labelsData,
                 datasets: [{
-                    label: "Temperatur trends ( Past 7 days )",
+                    label: "Temperature Trends ( Past 7 days )",
                     data: data.map((item) => item.Temp),
                     backgroundColor: [
                         'rgba(105, 0, 132, .2)',
