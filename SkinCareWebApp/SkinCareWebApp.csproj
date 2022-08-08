@@ -216,7 +216,6 @@
       <DependentUpon>SkinCareDataModel.edmx</DependentUpon>
       <LastGenOutput>SkinCareDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\ApplicationScripts\location.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\SkinCareDataModel.edmx">

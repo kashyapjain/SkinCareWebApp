@@ -20,10 +20,6 @@ namespace SkinCareWebApp.Services
             this._Lon = _Lon;
             this._Lat = _Lat;
         }
-        public UvModel[] GetHistoricalUvData()
-        {
-            return null;
-        }
         public WeatherModel GetRealTimeWeatherData()
         {
             try
