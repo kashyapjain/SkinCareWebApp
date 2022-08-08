@@ -34,15 +34,21 @@
             <a class="navbar-brand" href="#">SkinCare</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
+                    <li class="nav-item text-white" >
+                        @if (System.Web.HttpContext.Current.Request.Cookies.Count>0)
+                        { 
+                            @System.Web.HttpContext.Current.Request.Cookies["city"].Value 
+                        }
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home/index">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Contacts</a>
-                    </li>
+                    @*<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/home/index">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Contacts</a>
+        </li>*@
                 </ul>
                 @*<div class="d-flex input-group w-auto">
                     <h4>testing</h4>

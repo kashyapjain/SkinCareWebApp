@@ -94,7 +94,7 @@ namespace SkinCareWebApp.Services
 
                 UvModel uvData = JsonConvert.DeserializeObject<UvModel>(responseString);
                 
-                if(uvData.uv == 0)
+                if(uvData.latitude == 0)
                 {
                     ApiResult apiResult = JsonConvert.DeserializeObject<ApiResult>(responseString);
                     return apiResult.result;
