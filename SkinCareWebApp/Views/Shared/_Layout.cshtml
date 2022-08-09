@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item text-white" >
-                        @if (System.Web.HttpContext.Current.Request.Cookies.Count>0)
+                        @if (System.Web.HttpContext.Current.Request.Cookies["city"]!=null)
                         { 
                             @System.Web.HttpContext.Current.Request.Cookies["city"].Value 
                         }
@@ -143,6 +143,5 @@
     <script src="~/Scripts/ChartsScript.js"></script>
     <!-- Scripts -->
 
-    <script src="~/Scripts/ApplicationScripts/location.js"></script>
 </body>
 </html>

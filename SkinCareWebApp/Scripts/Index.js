@@ -6,7 +6,11 @@ uvCardTimeEle.innerHTML = `<b>${new Date().toLocaleTimeString()}</b>`
 
 
 let weatherCardDateEle = document.getElementById("weatherCardDateEle");
-weatherCardDateEle.innerHTML = `<b>${new Date().toLocaleDateString("en-US",{ year: 'numeric', month: 'short', day: 'numeric' })}</b>`
+
+function refreshTime() {
+    weatherCardDateEle.innerHTML = `<b>${new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' })}</b>`
+}
+setInterval(refreshTime, 1000);
 
 //
 
