@@ -95,7 +95,7 @@ function dataToBeExported(array) {
 
         return {
             id: `${item.latitude},${item.longitude}`,
-            text: `${item.city}`
+            text: `${item.city}, ${item.region}, ${item.countryCode}`
         }
     });
 
