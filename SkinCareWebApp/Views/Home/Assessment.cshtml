@@ -291,7 +291,7 @@
         }
 
         $.post('/Home/AssessmentResult', { q1: $("input[name='example1']:checked").val(), q2: $("input[name='example2']:checked").val(), q3: $("input[name='example3']:checked").val(), q4: $("input[name='example4']:checked").val(), q5: $("input[name='example5']:checked").val(), correct: count}, (data) => {
-            document.getElementById("result").textContent = 'Better than ' + data + '% of Participants!'
+            document.getElementById("result").textContent = 'Better than ' + data.toString().slice(0, 5) + '% of Participants!'
         });
 
         document.getElementById("score").textContent = 'You answered ' + count + ' out of 5 questions correctly!'
