@@ -34,9 +34,8 @@ namespace SkinCareWebApp.Services
             long EndDateEpoch = CurrentDateEpoch;               //GetUnixTime(CurrentDate.AddDays(-1).Date);
             long StartDateEpoch = GetUnixTime(CurrentDate.AddDays(-DataGap));
 
-            var LastRecord = Entities.TrendsMapDatas.ToList();
-            var lastRecord = LastRecord.Last();
-            if (LastRecord == null || LastRecord.Count==0 || lastRecord.LocationCityName!=CityName)
+            var LastRecord = Entities.TrendsMapDatas.SingleOrDefault(x => x.TrendStartDate == StartDateEpoch && x.TrendEndDate == EndDateEpoch && x.LocationCityName == CityName);
+            if (LastRecord == null)
             {
                 try
                 {
@@ -82,7 +81,7 @@ namespace SkinCareWebApp.Services
             }
             else
             {
-                long? tempdiff = EndDateEpoch - lastRecord.TrendEndDate;
+                long? tempdiff = EndDateEpoch - LastRecord.TrendEndDate;
                 if (tempdiff == 0)
                 {
                     var data = GetTrendsDataToDatabase(StartDateEpoch, EndDateEpoch);
