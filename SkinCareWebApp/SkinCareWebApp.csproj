@@ -176,7 +176,11 @@
     <Compile Include="Services\WeatherService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\jason-blackeye-R5rVLQZ8hG8-unsplash %281%29.jpg" />
+    <Content Include="Assets\Images\jason-blackeye-R5rVLQZ8hG8-unsplash.jpg" />
     <Content Include="Assets\Images\shield.png" />
+    <Content Include="Assets\Images\skincare_logo.png" />
+    <Content Include="Assets\Images\skincare_logo_1-removebg-preview.png" />
     <Content Include="Assets\Images\sun-protection.svg" />
     <Content Include="Assets\Images\uv-rays.png" />
     <Content Include="Assets\Images\uv_image.jpg" />
@@ -229,6 +233,7 @@
     <None Include="Properties\PublishProfiles\skincareapp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ChartsScript.js" />
+    <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -263,6 +268,7 @@
     <Content Include="Views\Home\WeatherCard.cshtml" />
     <Content Include="Views\Home\UvCard.cshtml" />
     <Content Include="Views\Home\CitySearchComponent.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

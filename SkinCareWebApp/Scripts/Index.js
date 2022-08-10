@@ -7,6 +7,8 @@ uvCardTimeEle.innerHTML = `<b>${new Date().toLocaleTimeString()}</b>`
 
 let weatherCardDateEle = document.getElementById("weatherCardDateEle");
 
+let url = window.location;
+
 function refreshTime() {
     weatherCardDateEle.innerHTML = `<b>${new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' })}</b>`
 }
@@ -103,3 +105,36 @@ function dataToBeExported(array) {
 }
 
 
+Enabler()
+
+function Enabler() {
+
+    let section = url.hash;
+    console.log(section)
+    if (section == null) {
+
+    }
+    else if (section === "#UvAndWeatherCardSection") {
+        
+        document.getElementById("UvAndWeatherCardSection").style = 'transition:all 0.6s ease-in-out;border: 1px solid red;margin: 20px';
+
+        setTimeout(() => {
+            document.getElementById("UvAndWeatherCardSection").style = ' border: none;margin: 0px';
+        },1000)
+    }
+    else if (section == "#PrecautionsSection") {
+        document.getElementById("PrecautionsSection").style = 'transition:all 0.6s ease-in-out; border: 1px solid red;margin: 20px';
+        
+        setTimeout(() => {
+            document.getElementById("PrecautionsSection").style = 'border: none;margin: 0px';
+        }, 1000)
+    }
+    else if (section == "#ChartsSection") {
+        document.getElementById("ChartsSection").style = 'transition:all 0.6s ease-in-out; border: 1px solid red;margin: 20px';
+
+        setTimeout(() => {
+            document.getElementById("ChartsSection").style = 'border: none;margin: 0px';
+        }, 1000)
+    }
+
+};

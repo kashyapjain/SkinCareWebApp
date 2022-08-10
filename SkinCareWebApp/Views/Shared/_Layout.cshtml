@@ -20,128 +20,143 @@
 </head>
 <body>
     <!-- Nav-Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarTogglerDemo03"
-                    aria-controls="navbarTogglerDemo03"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="#">SkinCare</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item text-white" >
-                        @if (System.Web.HttpContext.Current.Request.Cookies["city"]!=null)
-                        { 
-                            @System.Web.HttpContext.Current.Request.Cookies["city"].Value 
-                        }
-                    </li>
-                    @*<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/home/index">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled">Contacts</a>
-        </li>*@
-                </ul>
-                @*<div class="d-flex input-group w-auto">
-                    <h4>testing</h4>
-                </div>*@
+    <div class="d-flex flex-column bg-image"
+         style="height: 100%; background-image: url('https://images.unsplash.com/photo-1501871732394-eccc65227089?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-repeat: no-repeat; ">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 70px">
+                <div class="container-fluid d-flex">
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-mdb-toggle="collapse"
+                            data-mdb-target="#navbarTogglerDemo03"
+                            aria-controls="navbarTogglerDemo03"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand " href="/home/homepage">
+                        <img class="bg-light" src="~/Assets/Images/skincare_logo_1-removebg-preview.png" style="width: 200px; height:40px;border-radius:10px; padding: 0px; margin:0px;" />
+                    </a>
+                    <div class="d-flex flex-row-reverse flex-grow-1" id="navbarTogglerDemo03">
+                        <div class="dropdown">
+                            <a class=" text-light"
+                               href="/home/homepage"
+                               role="button"
+                               aria-expanded="false"
+                               style="margin-right:60px">
+                                Home
+                            </a>
+                            <a class="dropdown-toggle text-light"
+                               href="#"
+                               role="button"
+                               id="dropdownMenuLink"
+                               data-mdb-toggle="dropdown"
+                               aria-expanded="false"
+                               style="margin-right:60px">
+                                Services
+                            </a>
+                            <a class="text-light"
+                               href="#"
+                               role="button"
+                               aria-expanded="false"
+                               style="margin-right:60px">
+                                @if (System.Web.HttpContext.Current.Request.Cookies["city"] != null)
+                                {
+                                    <b>Location Selected: @System.Web.HttpContext.Current.Request.Cookies["city"].Value</b>
+                                }
+                            </a>
+
+                            <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="/home/index#UvAndWeatherCard">UV Index and Weather View</a></li>
+                                <li><a class="dropdown-item" href="#">UV and Temperatur Trends</a></li>
+                                <li><a class="dropdown-item" href="#">Activities and Precautions</a></li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <div>
+            @RenderBody()
+        </div>
+     
+        <div class="flex-grow-1 bg-dark text-center text-white justify-self-end">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #3b5998;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="glyphicon glyphicon-cloud"></i>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #55acee;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <!-- Google -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #dd4b39;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-google"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #ac2bac;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- Linkedin -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #0082ca;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <!-- Github -->
+                    <a class="btn btn-primary btn-floating m-1"
+                       style="background-color: #333333;"
+                       href="#!"
+                       role="button">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+                <!-- Section: Social media -->
             </div>
+
+
+            <!-- Copyright -->
+            <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
+                Copyright © 2022-2024  SkinCareWorks
+            </div>
+            <!-- Copyright -->
         </div>
-    </nav>
-    <!-- Nav-Bar -->
-    <!-- Body-content -->
-    <div class="p-4 shadow-4 rounded-3" style="background-color: hsl(0, 0%, 94%);">
-        @RenderBody()
+
     </div>
+        <!-- Scripts -->
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <!-- Body-content -->
-    <!-- Footer -->
-    <hr class="hr" />
-    <footer class="bg-dark text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #3b5998;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="glyphicon glyphicon-cloud"></i>
-                </a>
-
-                <!-- Twitter -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #55acee;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-                <!-- Google -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #dd4b39;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-google"></i>
-                </a>
-
-                <!-- Instagram -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #ac2bac;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <!-- Linkedin -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #0082ca;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <!-- Github -->
-                <a class="btn btn-primary btn-floating m-1"
-                   style="background-color: #333333;"
-                   href="#!"
-                   role="button">
-                    <i class="fab fa-github"></i>
-                </a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            Copyright © 2022-2024  SkinCareWorks
-        </div>
-        <!-- Copyright -->
-    </footer>
-
-    <!-- Footer -->
-    <!-- Scripts -->
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    <script src="~/Scripts/Index.js"></script>
-    <script src="~/Scripts/ChartsScript.js"></script>
-    <!-- Scripts -->
+        <!-- Scripts -->
 
 </body>
 </html>

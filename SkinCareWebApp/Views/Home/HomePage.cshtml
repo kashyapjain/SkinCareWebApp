@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="d-flex flex-column">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-11 p-4">
+            <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button"
+                            data-mdb-target="#carouselBasicExample"
+                            data-mdb-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+                    <button type="button"
+                            data-mdb-target="#carouselBasicExample"
+                            data-mdb-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button"
+                            data-mdb-target="#carouselBasicExample"
+                            data-mdb-slide-to="2"
+                            aria-label="Slide 3"></button>
+                </div>
+                <!-- Inner -->
+                <div class="carousel-inner">
+                    <!-- Single item -->
+                    <div class="carousel-item active">
+                        <a href="/home/index#UvAndWeatherCardSection">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-60" alt="Sunset Over the City" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>UV Index and Weather Information</h5>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Single item -->
+                    <div class="carousel-item">
+                        <a href="/home/index#PrecautionsSection">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-60" alt="Canyon at Nigh" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Precautions and Activities</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Single item -->
+                    <div class="carousel-item">
+                        <a href="/home/index#ChartsSection">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-60" alt="Cliff Above a Stormy Sea" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Trends of UV and Temperature of Past 7 days</h5>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Inner -->
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- Carousel wrapper -->
+
+        </div>
+    </div>
+    <div class="row d-flex p-4" style="background-color:rgba(0,0,0,0.3)">
+        <div class=" d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-start">
+            <img src="https://thumbs.dreamstime.com/z/uv-index-chart-infographic-safety-scale-sun-exposure-risk-vector-illustration-bright-modern-simple-style-124045245.jpg" style="border-radius:10px;" />
+        </div>
+        <div class=" d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-end align-items-center justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">What Is The UV Index Scale?</h2>
+                    <p class="card-text">
+                        The World Health Organization (WHO) created the UV index (abbreviated as UVI) in an effort to quantify the levels of UV radiation and the danger of sun exposure. The UV index is a measure of the UV radiation in any given place.
+                        Understanding the UV index helps people know what they need to do in order to protect themselves from the sun’s damaging rays. UV radiation can cause melanoma and other forms of skin cancer, so it’s crucial to take the right steps to protect yourself from the sun, especially when the UV is high.
+                    </p>
+                    <a href="/home/index#UvAndWeatherCardSection" class="btn bg-danger text-light"><b>Click to check UV Index of any city</b></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row d-flex p-4">
+        <div class=" d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-end align-items-center justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Precautions for skin protection with UV</h2>
+                    <div class="card-text">
+                        <ul class="list-group list-group-light">
+                            <li class="list-group-item">
+                                Stay in shade near midday when the sun is strongest.
+                            </li>
+                            <li class="list-group-item ">
+                                Try not to wear makeup as it can clog your skin pores and cause break-outs. Even if you are, make sure you clean it well before going to the bed.
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="/home/index#PrecautionsSection" id="PrecautionsSectionBtn" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class=" d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-start">
+            <img src="https://thumbs.dreamstime.com/z/happy-family-mother-father-children-son-daughter-sunset-nature-150794881.jpg" style="border-radius:10px;" />
+        </div>
+    </div>
+
+    <div class="row flex-grow-1" style="background-color:rgba(0,0,0,0.3)">
+        <div class="p-4 ">
+            <div class="card text-light" style="background-color: #87CEEB">
+                <div class="card-body">
+                    <div class="card-text d-flex">
+                        <div class="d-flex flex-column justify-content-around ">
+                            <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-2">
+                                <h2 class="card-title text-dark">Charts Showing Temperatures and UV Trends</h2>
+                            </div>
+                            <div class="d-flex p-2">
+                                <div class=" d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-start">
+                                    <h4 class="text-dark">
+                                        Ozone depletion, as well as seasonal and weather variations, cause different amounts of UV radiation to reach the Earth at any given time. Taking these factors into account, the UV Index predicts the level of solar UV radiation and  indicates the risk of overexposure on a scale from 0 (low) to 11 or more (extremely high). A special UV Alert may be issued for a particular area, if the UV Index is forecasted to be higher than normal.
+                                    </h4>
+                                </div>
+                                <div class="flex-grow-1 d-flex flex-column col-md-4 p-4 flex-grow-1 justify-self-end">
+                                    <img src="https://img.freepik.com/premium-vector/bar-chart-with-uptrend-arrow-blue-background-with-copy-space-business-growth-concept_120819-883.jpg" style="border-radius:10px;" />
+                                </div>
+                            </div>
+                            <a href="/home/index#ChartsSection" style="width: 20%;"class="btn btn-primary m-2 p-2">Show Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/HomePage.js"></script>
