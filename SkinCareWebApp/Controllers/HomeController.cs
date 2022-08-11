@@ -157,6 +157,10 @@ namespace SkinCareWebApp.Controllers
             return View();
         }
 
+        public ActionResult HomePage2()
+        {
 
+            return View();
+        }
     }
 }

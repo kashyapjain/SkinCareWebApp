@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div>
+    <div style="background-image: url(https://media.allure.com/photos/5d00f50eec86fe723408f40b/16:9/w_2560%2Cc_limit/how-dermatologists-protect-from-sun-summer-lede.jpg);
+
+      display: flex; justify-content:end; align-items:end; background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; background-color: red;
+      padding:250px;">
+        <div>
+            <div><h1 style="color:white; font-weight:800; font-size:75px;">Welcome to Skin Care</h1></div>
+            <div style="text-align:center">
+                <h1 style="color:white">
+                    Defend your skin from various <br />
+                    weather conditions now
+                </h1>
+            </div>
+            <div style="display: flex; justify-content:center; align-items:center; ">
+                <button class="btn-lg">@Html.ActionLink("Try Now","Index")</button>
+            </div>
+        </div>
+    </div>
+</div>
