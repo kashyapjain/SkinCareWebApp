@@ -8,8 +8,8 @@
 
       display: flex; justify-content:end; align-items:end; background-position: center;
       background-repeat: no-repeat;
-      background-size: cover; background-color: red;
-      padding:250px;">
+      background-size: cover;
+      padding:125px;">
         <div>
             <div><h1 style="color:white; font-weight:800; font-size:75px;">Welcome to Skin Care</h1></div>
             <div style="text-align:center">
@@ -19,7 +19,7 @@
                 </h1>
             </div>
             <div style="display: flex; justify-content:center; align-items:center; ">
-                <button class="btn-lg" style="background-color:white;color:black;border:none;color:black;">
+                <button class="btn-lg" style="background-color:white;color:black;border:none;color:black;"  onclick="()=>window.location.href('@Url.Action("Index","HomeController")')">
                     @Html.ActionLink("Try Now", "Index")
                 </button>
             </div>
